@@ -4,6 +4,7 @@ import { galleryItems } from './gallery-items';
 
 import simpleLightbox from 'simplelightbox';
 import { createMarkup } from './helpers/createMarkup';
+import 'simplelightbox/dist/simple-lightbox.min.css';
 
 //додованяя елементів в DOM
 const gallery = document.querySelector('.gallery');
