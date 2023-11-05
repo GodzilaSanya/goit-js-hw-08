@@ -1,4 +1,4 @@
-import { debounce } from 'lodash';
+import { debounce, throttle } from 'lodash';
 import { saveStorage, loadStorage } from './helpers/storage.js';
 
 const refs = {
@@ -7,7 +7,7 @@ const refs = {
   inputMessage: document.querySelector('.feedback-form textarea'),
 };
 
-refs.form.addEventListener('input', debounce(handlerInput, 500));
+refs.form.addEventListener('input', throttle(handlerInput, 500));
 refs.form.addEventListener('submit', handlerSubmit);
 
 //заповенення форми при завантаженні вікна
