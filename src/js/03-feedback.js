@@ -23,7 +23,10 @@ window.addEventListener('load', function () {
 });
 
 //збереження даних з localeStorage в зміну
-const userData = loadStorage('feedback-form-state');
+const userData = loadStorage('feedback-form-state') ?? {
+  email: '',
+  message: '',
+};
 
 // збереження даних з форми в сховище
 function handlerInput(event) {
