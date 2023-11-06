@@ -12,17 +12,20 @@ refs.form.addEventListener('submit', handlerSubmit);
 
 //заповенення форми при завантаженні вікна
 window.addEventListener('load', function () {
-  if (loadStorage('feedback-form-state')) {
-    const { email: sevedEmail, message: savedMessage } = loadStorage(
-      'feedback-form-state'
-    );
-    refs.inputEmail.value = sevedEmail;
-    refs.inputMessage.value = savedMessage;
+  if (!loadStorage('feedback-form-state')) {
+    console.log('need create localStor');
+    saveStorage('feedback-form-state', { email: '', message: '' });
+  } else if (loadStorage('feedback-form-state')) {
+    const { email, message } = loadStorage('feedback-form-state');
+    refs.inputEmail.value = email;
+    refs.inputMessage.value = message;
   }
 });
 
+//збереження даних з localeStorage в зміну
+const userData = loadStorage('feedback-form-state');
+
 // збереження даних з форми в сховище
-const userData = { email: '', message: '' };
 function handlerInput(event) {
   if (event.target.name === 'email') {
     userData.email = event.target.value;
